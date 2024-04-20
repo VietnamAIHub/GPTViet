@@ -1,0 +1,36 @@
+#!/bin/bash
+#SBATCH --job-name=test_slurm # define job name
+#SBATCH --nodes=1             # define node
+#SBATCH --gpus-per-node=1     # define gpu limmit in 1 node
+#SBATCH --ntasks=1           # define number tasks
+#SBATCH --cpus-per-task=24   # There are 24 CPU cores
+#SBATCH --nodelist=node002
+
+# while true; do nvidia-smi > gpu_status.txt; sleep 5; done &
+nvidia-smi
+echo "-----------------------------"
+echo "## Print Python and cuda"
+
+# Load module
+# Some module avail:
+## pytorch-extra-py39-cuda11.2-gcc9
+## tensorflow2-extra-py39-cuda11.2-gcc9
+## horovod-pytorch-py39-cuda11.2-gcc9
+## horovod-tensorflow2-py39-cuda11.2-gcc9
+## xgboost-py39-cuda11.2-gcc9
+## fastai2-py39-cuda11.2-gcc9
+
+source activate villm
+
+python --version
+python unsloth_sft_finetune.py
+
+echo "-----------------------------"
+echo "SLURM_GPUS_ON_NODE=$SLURM_GPUS_ON_NODE"
+echo "SLURM_GPUS_PER_NODE=$SLURM_GPUS_PER_NODE"
+echo "SLURM_JOB_GPUS=$SLURM_JOB_GPUS"
+
+echo "-----------------------------"
+echo "Exit worker node"
+echo "## Print Finish Testing"
+# sleep 20
