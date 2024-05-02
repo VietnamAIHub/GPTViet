@@ -28,5 +28,5 @@ This project aims to develop a bilingual foundation model both language and mult
 ## Giúp Đỡ (How You can HELP)
 1. Nhằm để hỗ trợ tài chính Nhóm xin nhận làm các dự án của công ty tư nhân, các tổ chức nghiên cứu, hoặc cá nhân.
 2. Bạn có thể hổ trợ về tài nguyên như máy chủ server hoặc các tài nguyên khác.
-  - Dự án hiện rất cần các nguồn tài trợ tài nguyên GPUs để có thể tiến hành quá trình huấn luyện (Pretraining) và quá trình tinh chỉnh (Finetuning).
+  - Dự án hiện rất cần các nguồn tài trợ tài nguyên GPUs để có thể tiến hành quá trình huấn luyện (Training Model).
   - Bạn có thể kết nối trực tiếp với Trần Nhiệm [LinkedIn](https://www.linkedin.com/in/tran-nhiem-ab1851125/) [Facebook](https://www.facebook.com/jean.tran.336). email: tvnhiemhcmus@gmail.com.
