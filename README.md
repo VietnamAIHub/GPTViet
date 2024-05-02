@@ -5,6 +5,10 @@
 
 This project aims to develop a bilingual foundation model both language and multimodal capabilities. The objective is to enhance an existing Open-source English English model, optimizing it for the Vietnamese language.
 
+<h3 align="center">
+  <span> GPTViet - Target Development</span>
+</h3>
+
 <div align="center">
      <img width="auto" height="400px" src="./GPTViet.png"/>
 </div>
@@ -12,13 +16,20 @@ This project aims to develop a bilingual foundation model both language and mult
 ## 💡 Get help - [Q&A](https://github.com/TranNhiem/Vietnamese_LLMs/discussions) or [Discord 💬](https://discord.gg/BC8Mqq8qYn)
 
 
+
+## 1. Roadmap Development of Language Foundation Model: 
+
+<div align="center">
+     <img width="auto" height="300px" src="./GPTViet_llm.png"/>
+</div>
+
 ## Demo: 
 
 <div align="center">
      <img width="auto" height="500px" src="./images/Vietassistant_GPT.gif"/>
 </div>
 
-<!--
+<--
 + [**GPTViet 8B Demo**](https://bf930a52b9d6266882.gradio.live/)
 + [**GPTViet 70B Demo**](https://bf930a52b9d6266882.gradio.live/)
 + [**GPTViet Translation Demo**](https://31fee86ed135939f28.gradio.live/)
