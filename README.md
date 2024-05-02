@@ -20,7 +20,7 @@ This project aims to develop a bilingual foundation model both language and mult
 ## 1. Roadmap Development of Language Foundation Model: 
 
 <div align="center">
-     <img width="auto" height="300px" src="./GPTViet_llm.png"/>
+     <img width="auto" height="400px" src="./GPTViet_llm.png"/>
 </div>
 
 ## Demo: 
@@ -29,11 +29,11 @@ This project aims to develop a bilingual foundation model both language and mult
      <img width="auto" height="500px" src="./images/Vietassistant_GPT.gif"/>
 </div>
 
-<--
+
 + [**GPTViet 8B Demo**](https://bf930a52b9d6266882.gradio.live/)
 + [**GPTViet 70B Demo**](https://bf930a52b9d6266882.gradio.live/)
 + [**GPTViet Translation Demo**](https://31fee86ed135939f28.gradio.live/)
--->
+
 
 
 ## Giúp Đỡ (How You can HELP)
