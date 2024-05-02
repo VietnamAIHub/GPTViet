@@ -1,17 +1,144 @@
 from unsloth import FastLanguageModel
 import torch
-from trl import SFTTrainer
-from transformers import TrainingArguments
+from trl import SFTTrainer, DataCollatorForCompletionOnlyLM
+from transformers import TrainingArguments, GenerationConfig
 from datasets import load_dataset
+from trl.trainer.utils import ConstantLengthDataset
+from transformers import TrainerCallback
+from transformers.integrations import WandbCallback
+from tqdm import tqdm
+##------------------------------------------------------------------------------------------
+#### Preparation Dataset Section 
+##------------------------------------------------------------------------------------------
 
-# Get LAION dataset
-url = "https://huggingface.co/datasets/laion/OIG/resolve/main/unified_chip2.jsonl"
-dataset = load_dataset("json", cache_dir="/data2/cmdir/home/villm/data/unified_chip2", data_files = {"train" : url}, split = "train")
+
+data_path="/data2/cmdir/home/villm/data/alpaca_format/data_v4.json"
+train_data = load_dataset(
+        'json',
+        data_files=data_path,
+        split="train",
+        # cache_dir=cache_dir,
+        # data_dir=data_dir,
+    )
+data_path_eval="/data2/cmdir/home/villm/data/eval_data/subset_en_vi_sebench.json"
+eval_data = load_dataset(
+        'json',
+        data_files=data_path_eval,
+        split="train",
+        # cache_dir=cache_dir,
+        # data_dir=data_dir,
+    )
+
+def prompt_no_input(row):
+    return ("<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by Dr. Tran Nhiem. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
+         When given tasks, approach them step-by-step, always justifying your actions for the user. If you encounter multiple-choice questions, first output the correct answer, then delve into why other options are incorrect.\
+          breaking down even complex tasks into simpler, understandable terms.\
+           Additionally, consider yourself well-versed in every language, capable of translating and explaining language tasks effortlessly. When presented with task definitions or samples, dissect them into key components, clarifying each segment with relevant examples. \
+           Your overarching goal is to be a reliable source of knowledge, translating any instruction or task into actionable and easily digestible information.\
+        If a question does not make any sense, or is not factually coherent, explain why instead of answering something not \
+        correct. If you don't know the answer to a question, please don't share false information.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n {instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n{output}").format_map(row)
+
+
+def prompt_input(row):
+
+    return ("<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by Dr. Tran Nhiem. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
+         When given tasks, approach them step-by-step, always justifying your actions for the user. If you encounter multiple-choice questions, first output the correct answer, then delve into why other options are incorrect.\
+          breaking down even complex tasks into simpler, understandable terms.\
+           Additionally, consider yourself well-versed in every language, capable of translating and explaining language tasks effortlessly. When presented with task definitions or samples, dissect them into key components, clarifying each segment with relevant examples. \
+           Your overarching goal is to be a reliable source of knowledge, translating any instruction or task into actionable and easily digestible information.\
+        If a question does not make any sense, or is not factually coherent, explain why instead of answering something not \
+        correct. If you don't know the answer to a question, please don't share false information.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n {instruction}\n\n### Input:\n{history_conversation} <|eot_id|><|start_header_id|>assistant<|end_header_id|>\n{output}").format_map(row)
+def prompt_eval_no_input(row):
+    return ("<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by Dr. Tran Nhiem. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
+         When given tasks, approach them step-by-step, always justifying your actions for the user. If you encounter multiple-choice questions, first output the correct answer, then delve into why other options are incorrect.\
+          breaking down even complex tasks into simpler, understandable terms.\
+           Additionally, consider yourself well-versed in every language, capable of translating and explaining language tasks effortlessly. When presented with task definitions or samples, dissect them into key components, clarifying each segment with relevant examples. \
+           Your overarching goal is to be a reliable source of knowledge, translating any instruction or task into actionable and easily digestible information.\
+        If a question does not make any sense, or is not factually coherent, explain why instead of answering something not \
+        correct. If you don't know the answer to a question, please don't share false information.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n {instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n{output}").format_map(row)
+
+
+
+def create_alpaca_prompt(row):
+    return prompt_no_input(row) if row["history_conversation"] == "" else prompt_input(row)
+
+def create_eval_alpaca_prompt(row):
+    return prompt_eval_no_input(row) 
+
+
+# def get_stack_exchange_paired(
+#     data_dir: str = "data/rl",
+#     sanity_check: bool = False,
+#     cache_dir: Optional[str] = None,
+#     num_proc=24,
+# ) -> Dataset:
+#     """Load the stack-exchange-paired dataset from Hugging Face and convert it to the necessary format.
+
+#     The dataset is converted to a dictionary with the following structure:
+#     {
+#         'prompt': List[str],
+#         'chosen': List[str],
+#         'rejected': List[str],
+#     }
+
+#     Prompts are structured as follows:
+#       "Question: " + <prompt> + "\n\nAnswer: "
+#     """
+#     dataset = load_dataset(
+#         'json',
+#         data_files=data_path,
+#         split="train",
+#         # cache_dir=cache_dir,
+#         # data_dir=data_dir,
+#     )
+#     original_columns = dataset.column_names
+
+#     if sanity_check:
+#         dataset = dataset.select(range(min(len(dataset), 1000)))
+
+#     def return_prompt_and_responses(samples) -> Dict[str, str]:
+#         return f"<|im_start|>system\n you are a Foxbrain AI assistant, designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
+#          When given tasks, approach them step-by-step, always justifying your actions for the user. if you encounter multiple-choice questions, first output the correct answer, then delve into why other options are incorrect.\
+#           breaking down even complex tasks into simpler, understandable terms.\
+#            Additionally, consider yourself well-versed in every language, capable of translating and explaining language tasks effortlessly. When presented with task definitions or samples, dissect them into key components, clarifying each segment with relevant examples. \
+#            Your overarching goal is to be a reliable source of knowledge, translating any instruction or task into actionable and easily digestible information.\
+#         If a question does not make any sense, or is not factually coherent, explain why instead of answering something not \
+#         correct. If you don't know the answer to a question, please don't share false information.<|im_end|>\n\n <|im_start|>user \n" + question + "<|im_end|>\n\n<|im_start|>assistant: " for question in samples["prompt_trans"]],
+#             "chosen": samples["chosen_trans"],
+#             "rejected": samples["rejected_trans"],
+        
+
+#     return dataset.map(
+#         return_prompt_and_responses,
+#         batched=True,
+#         num_proc=num_proc,
+#         remove_columns=original_columns,
+#     )
+
+
+# dataset=get_stack_exchange_paired()
+
+
+
+
+##------------------------------------------------------------------------------------------
+#### Training Model Setting Section 
+##------------------------------------------------------------------------------------------
 
 import wandb, os
 wandb.login()
 
-wandb_project = "FoxBrain_LLM"
+run = wandb.init(
+    # Set the project where this run will be logged
+    project="GPTViet_LLM",
+    # Track hyperparameters and run metadata
+    config={
+        "learning_rate": 2e-4,
+        "epochs": 10,
+    },
+)
+
+wandb_project = "GPTViet_LLM"
 if len(wandb_project) > 0:
     os.environ["WANDB_PROJECT"] = wandb_project
 
@@ -26,15 +153,32 @@ fourbit_models = [
 
 # Load Llama model
 cach_dir_="/data2/cmdir/home/villm/model_weights/mistral"
+cach_dir_='/data2/cmdir/home/villm/model_weights/llama3'
 model_path="/data2/cmdir/home/villm/model_weights/mistral/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/41b61a33a2483885c981aa79e0df6b32407ed873"
-max_seq_length = 2048 # Supports RoPE Scaling interally, so choose any!
-
+model_path="/data2/cmdir/home/villm/model_weights/llama3/models--meta-llama--Meta-Llama-3-8B/snapshots/b6887ce03ea47d068bf8502ba6ed27f8c5c12a6b"
+model_path="/data2/cmdir/home/villm/model_weights/llama3/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/1448453bdb895762499deb4176c1dd83b145fac1"
+model_path="/data2/cmdir/home/villm/model_weights/llama3/models--meta-llama--Meta-Llama-3-70B-Instruct/snapshots/e8cf5276ae3e97cfde8a058e64a636f2cde47820"
+max_seq_length = 3048 # Supports RoPE Scaling interally, so choose any!
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name =model_path , # Supports Llama, Mistral - replace this!
     cache_dir=cach_dir_,
     max_seq_length = max_seq_length,
     dtype = None,
     load_in_4bit = True,)
+
+### Get the dataset after Defined Tokenizer
+train_dataset = ConstantLengthDataset(
+    tokenizer,
+    train_data,
+    formatting_func=create_alpaca_prompt,
+    seq_length=3048,)
+
+eval_dataset = ConstantLengthDataset(
+    tokenizer,
+    eval_data,
+     formatting_func=create_alpaca_prompt,
+    seq_length=3048,)
+
 
 # Do model patching and add fast LoRA weights
 model = FastLanguageModel.get_peft_model(
@@ -51,32 +195,93 @@ model = FastLanguageModel.get_peft_model(
     loftq_config = None, # And LoftQ
 )
 
+
 trainer = SFTTrainer(
     model = model,
-    train_dataset = dataset,
+    train_dataset = train_dataset,
+    eval_dataset=eval_dataset,
     dataset_text_field = "text",
     max_seq_length = max_seq_length,
     tokenizer = tokenizer,
     args = TrainingArguments(
-        per_device_train_batch_size = 2,
-        gradient_accumulation_steps = 4,
-        warmup_steps = 10,
-        max_steps = 10,
+        per_device_train_batch_size = 5,
+        gradient_accumulation_steps = 5,
+        warmup_steps = 20,
+        #max_steps = 10000,
+        num_train_epochs=5,
+        learning_rate=2e-4,
+       evaluation_strategy="steps",
+        eval_steps=1000,
+        lr_scheduler_type="cosine",
+        gradient_checkpointing=True,
         fp16 = not torch.cuda.is_bf16_supported(),
         bf16 = torch.cuda.is_bf16_supported(),
-        logging_steps = 1,
-        output_dir = "/data2/cmdir/home/villm/training_output/",
-        optim = "adamw_8bit",
+        logging_steps = 10,
+        #output_dir = "/data2/cmdir/home/villm/training_output/",
+        #output_dir = "/data2/cmdir/home/villm/training_instruct_output/",
+        output_dir="/data2/cmdir/home/villm/train_output/llama3_70",
+
+        optim = "paged_adamw_8bit",
         seed = 3407,
         report_to="wandb",           # Comment this out if you don't want to use weights & baises
         # run_name=f"{run_name}-{datetime.now().strftime('%Y-%m-%d-%H-%M')}"    
     ),
-
 )
+
+
+##------------------------------------------------------------------------------------------
+#### Evaluation Section  
+##------------------------------------------------------------------------------------------
+
+# Assuming your JSON is structured with a top-level array of objects
+dataset = load_dataset('json', data_files={'test': '/data2/cmdir/home/villm/data/eval_data/subset_en_vi_sebench.json'})
+# Access the test set
+test_dataset = dataset['test']
+## Adding the Computing Cosine Similarity on Different Benchmark Test
+
+class LLMSampleCB(WandbCallback):
+    def __init__(self, trainer, test_dataset, num_samples=5, max_new_tokens=2048, log_model="checkpoint"):
+        super().__init__()
+        self._log_model = log_model
+        self.sample_dataset = test_dataset.select(range(num_samples))
+        self.model, self.tokenizer = trainer.model, trainer.tokenizer
+        self.gen_config = GenerationConfig.from_pretrained(trainer.model.name_or_path,
+                                                           max_new_tokens=max_new_tokens)
+    def generate(self, prompt):
+        tokenized_prompt = self.tokenizer(prompt, return_tensors='pt')['input_ids'].cuda()
+        with torch.inference_mode():
+            output = self.model.generate(tokenized_prompt, generation_config=self.gen_config)
+        return self.tokenizer.decode(output[0][len(tokenized_prompt[0]):], skip_special_tokens=True)
+    
+    def samples_table(self, examples):
+        records_table = wandb.Table(columns=["prompt", "generation"] + list(self.gen_config.to_dict().keys()))
+        for example in tqdm(examples, leave=False):
+            input = example["instruction"]
+            prompt= f"<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by Dr. Tran Nhiem. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
+         When given tasks, approach them step-by-step, always justifying your actions for the user. If you encounter multiple-choice questions, first output the correct answer, then delve into why other options are incorrect.\
+          breaking down even complex tasks into simpler, understandable terms.\
+           Additionally, consider yourself well-versed in every language, capable of translating and explaining language tasks effortlessly. When presented with task definitions or samples, dissect them into key components, clarifying each segment with relevant examples. \
+           Your overarching goal is to be a reliable source of knowledge, translating any instruction or task into actionable and easily digestible information.\
+        If a question does not make any sense, or is not factually coherent, explain why instead of answering something not \
+        correct. If you don't know the answer to a question, please don't share false information.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n {input}<|eot_id|><|start_header_id|>assistant<|end_header_id|>"
+            generation = self.generate(prompt=prompt)
+            records_table.add_data(prompt, generation, *list(self.gen_config.to_dict().values()))
+        return records_table
+        
+    def on_evaluate(self, args, state, control,  **kwargs):
+        super().on_evaluate(args, state, control, **kwargs)
+        records_table = self.samples_table(self.sample_dataset)
+        self._wandb.log({"sample_predictions":records_table})
+
+# we instantiate the W&B callback with the trainer object and the dataset we want to sample from
+wandb_callback = LLMSampleCB(trainer, test_dataset, num_samples=30, max_new_tokens=2048)
+trainer.add_callback(wandb_callback)
 trainer.train()
 
-output_dir="/data2/cmdir/home/villm/training_output"
-trainer.train()
+
+output_dir="/data2/cmdir/home/villm/training_instruct_output"
+output_dir="/data2/cmdir/home/villm/train_output/llama3_70"
+
 trainer.save_model(output_dir)
 
 # 7. save
