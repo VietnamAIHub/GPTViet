@@ -29,8 +29,9 @@ This project aims to develop a bilingual foundation model both language and mult
      <img width="auto" height="500px" src="./images/Vietassistant_GPT.gif"/>
 </div>
 
-+ [**GPTViet 8B Demo**](http://140.115.53.106:8888/)
-+ [**GPTViet 70B Demo**](https://bf930a52b9d6266882.gradio.live/)
++ [**GPTViet 8B Demo Chat & Websearch Integration**](http://140.115.53.106:8888/)
++ [**GPTViet 70B Demo Coming Soon**]()
++ [**GPTViet Document Chat Demo Coming Soon**]()
 
 ## Performance Benchmarks on Multiple Task: 
 + Access Benchmark Data
@@ -43,4 +44,4 @@ This project aims to develop a bilingual foundation model both language and mult
 1. Nhằm để hỗ trợ tài chính Nhóm xin nhận làm các dự án của công ty tư nhân, các tổ chức nghiên cứu, hoặc cá nhân.
 2. Bạn có thể hổ trợ về tài nguyên như máy chủ server hoặc các tài nguyên khác.
   - Dự án hiện rất cần các nguồn tài trợ tài nguyên GPUs để có thể tiến hành quá trình huấn luyện (Training Model).
-  - Bạn có thể kết nối trực tiếp với Trần Nhiệm [LinkedIn](https://www.linkedin.com/in/tran-nhiem-ab1851125/) [Facebook](https://www.facebook.com/jean.tran.336). [X](https://twitter.com/TranRick2) [email]: tvnhiemhcmus@gmail.com.
+  - Bạn có thể kết nối trực tiếp với Trần Nhiệm [email]: tvnhiemhcmus@gmail.com. Hoặc có thể chat trực tiếp ở: [LinkedIn](https://www.linkedin.com/in/tran-nhiem-ab1851125/) [Facebook](https://www.facebook.com/jean.tran.336). [X](https://twitter.com/TranRick2). [Zalo](+886 934 311 751)
