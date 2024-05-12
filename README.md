@@ -45,17 +45,17 @@ This project aims to develop a multilingual foundation model both language and m
   
 | Benchmark Category                     | Benchmark Task Description                       | Metric     | Number of Samples |
 |----------------------------------------|--------------------------------------------------|------------|-------------------|
-| **General Knowledge**                  |                                                  |            |                   |
-| Việt Exam Lớp 6-12                     | General knowledge test for grades 6 to 12 in Vietnam |            |                   |
-| VMLU (Val+Test)                        | Validation test for Vietnamese language understanding |            |                   |
-| **Summarization (Short & Long)**       |                                                  |            |                   |
-| BìnhNews (ROUGH_1,2)                   | Roughness metrics 1 and 2 for summarization       | ROUGH_1,2  |                   |
-| VietNews (ROUGH_1,2)                   | Roughness metrics 1 and 2 for news summarization in Vietnamese | ROUGH_1,2  |                   |
-| **Translation**                        |                                                  |            |                   |
-| EN2Vi (BLEU)                           | English to Vietnamese translation using BLEU metric | BLEU       |                   |
-| Vi2EN (BLEU)                           | Vietnamese to English translation using BLEU metric | BLEU       |                   |
-| **Human Benchmark**                    |                                                  |            |                   |
-| SeaBench (Realworld_Test)              | Real-world testing benchmark for human-like tasks |            |                   |
+| **<span style="font-size:14px">General Knowledge</span>**                  |                                                  |            |                   |
+| <span style="font-size:12px">Việt Exam Lớp 6-12</span>                     | <span style="font-size:12px">General knowledge test for grades 6 to 12 in Vietnam</span> |            |                   |
+| <span style="font-size:12px">VMLU (Val+Test)</span>                        | <span style="font-size:12px">Validation test for Vietnamese language understanding</span> |            |                   |
+| **<span style="font-size:14px">Summarization (Short & Long)</span>**       |                                                  |            |                   |
+| <span style="font-size:12px">BìnhNews (ROUGH_1,2)</span>                   | <span style="font-size:12px">Roughness metrics 1 and 2 for summarization</span>       | <span style="font-size:12px">ROUGH_1,2</span>  |                   |
+| <span style="font-size:12px">VietNews (ROUGH_1,2)</span>                   | <span style="font-size:12px">Roughness metrics 1 and 2 for news summarization in Vietnamese</span> | <span style="font-size:12px">ROUGH_1,2</span>  |                   |
+| **<span style="font-size:14px">Translation</span>**                        |                                                  |            |                   |
+| <span style="font-size:12px">EN2Vi (BLEU)</span>                           | <span style="font-size:12px">English to Vietnamese translation using BLEU metric</span> | <span style="font-size:12px">BLEU</span>       |                   |
+| <span style="font-size:12px">Vi2EN (BLEU)</span>                           | <span style="font-size:12px">Vietnamese to English translation using BLEU metric</span> | <span style="font-size:12px">BLEU</span>       |                   |
+| **<span style="font-size:14px">Human Benchmark</span>**                    |                                                  |            |                   |
+| <span style="font-size:12px">SeaBench (Realworld_Test)</span>              | <span style="font-size:12px">Real-world testing benchmark for human-like tasks</span> |            |                   |
 
 
 + Access Benchmark Performance Setting
