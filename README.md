@@ -26,8 +26,11 @@ This project aims to develop a bilingual foundation model both language and mult
 ## Demo Language Model: 
 
 <div align="center">
-    [![Watch the video](https://img.youtube.com/vi/B0bDwsAli_k/0.jpg)](https://youtu.be/B0bDwsAli_k)
+  <a href="https://youtu.be/B0bDwsAli_k">
+    <img src="https://img.youtube.com/vi/B0bDwsAli_k/0.jpg" alt="Watch the video" width="500px" height="auto">
+  </a>
 </div>
+
 
 
 + [**GPTViet 8B Demo Chat & Websearch Integration**](http://140.115.53.106:8888/)
