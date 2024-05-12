@@ -3,7 +3,7 @@
   <span> GPTViet - Advancing Foundation Models</span>
 </h1>
 
-This project aims to develop a bilingual foundation model both language and multimodal capabilities. The objective is to enhance an existing Open-source English English model, optimizing it for the Vietnamese language.
+This project aims to develop a multilingual foundation model both language and multimodal capabilities. The objective is to enhance an existing Open-source English based model, optimizing it for the Vietnamese and others language.
 
 <h3 align="center">
   <span> GPTViet - Target Development</span>
