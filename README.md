@@ -46,16 +46,22 @@ This project aims to develop a multilingual foundation model both language and m
 | Benchmark Category                     | Benchmark Task Description                       | Metric     | Number of Samples |
 |----------------------------------------|--------------------------------------------------|------------|-------------------|
 | **<span style="font-size:13px">General Knowledge</span>**                  |                                                  |            |                   |
-| <span style="font-size:11px"> Vietnamese Exam (Từ 6-12,& THPT)</span>           | <span style="font-size:11px">General knowledge test for grades 6 to 12 in Vietnam</span> |            |                   |
-| <span style="font-size:11px"> VMLU Vietnamese Multitask Language Understanding</span>                        | <span style="font-size:11px">10,880 multiple-choice questions covering 58 distinct subjects, distributed across four overarching domains: STEM, Humanities, Social Sciences, and beyond. It spans a wide range of difficulty levels, from elementary proficiency to advanced professional expertise, challenging foundation models in both general knowledge and complex problem-solving.</span> |            |                   |
+| <span style="font-size:11px"> Vietnamese Exam (Từ lớp 6->12,& THPT)</span>           | <span style="font-size:11px">Đánh giá Tổng hợp bộ câu hỏi trắc nghiệm cho các bộ môn (Toán, Lý, Hoá, Anh, Sinh vv..) dựa trên các bộ đề thi ở Việt nam từ lớp 6 đến lớp 12 và bao gồm thi Trung học phổ thông quốc gia </span> |   Prefix Match (Accuracy)         |     33, 000              |
+| <span style="font-size:11px"> VMLU Vietnamese Multitask Language Understanding</span>                        | <span style="font-size:11px"> Đánh giá dựa trên câu hỏi trắc nghiệm bao gồm 58 chủ đề khác nhau, được phân bố qua bốn lĩnh vực chính: STEM, Nhân văn, Khoa học Xã hội, và hơn thế nữa. Nó bao trùm nhiều cấp độ khó khác nhau, từ trình độ cơ bản đến chuyên môn nâng cao, thách thức các mô hình nền tảng trong cả kiến thức chung và giải quyết vấn đề phức tạp.</span> |      Prefix Match (Accuracy)      |     10,880               |
 | **<span style="font-size:13px">Summarization (Short & Long)</span>**       |                                                  |            |                   |
-| <span style="font-size:11px">BìnhNews (ROUGH_1,2)</span>                   | <span style="font-size:11px">Roughness metrics 1 and 2 for summarization</span>       | <span style="font-size:11px">ROUGH_1,2</span>  |                   |
-| <span style="font-size:11px">VietNews (ROUGH_1,2)</span>                   | <span style="font-size:11px">Roughness metrics 1 and 2 for news summarization in Vietnamese</span> | <span style="font-size:11px">ROUGH_1,2</span>  |                   |
+| <span style="font-size:11px">BìnhNews (ROUGH_1,2)</span>                   | <span style="font-size:11px">Tóm tắt các ý chính quan trong của một đoạn văn</span>       | <span style="font-size:11px">ROUGH_1,2</span>  |                   |
+| <span style="font-size:11px">VietNews (ROUGH_1,2)</span>                   | <span style="font-size:11px">Tóm tắt Văn bản dựa trên một câu chính để mô tả nội dung của đoạn văn</span> | <span style="font-size:11px">ROUGH_1,2</span>  |                   |
 | **<span style="font-size:13px">Translation</span>**                        |                                                  |            |                   |
-| <span style="font-size:11px">EN2Vi (BLEU)</span>                           | <span style="font-size:11px">English to Vietnamese translation using BLEU metric</span> | <span style="font-size:11px">BLEU</span>       |                   |
-| <span style="font-size:11px">Vi2EN (BLEU)</span>                           | <span style="font-size:11px">Vietnamese to English translation using BLEU metric</span> | <span style="font-size:11px">BLEU</span>       |                   |
+| <span style="font-size:11px"> Flore 101 EN2Vi </span>                           | <span style="font-size:11px"> Đánh giá khả năng dịch thuật English to Vietnamese</span> | <span style="font-size:11px">BLEU</span>       |       (BLEU)& Embedding Similarity           | 1297
+| <span style="font-size:11px"> Flore 101 Vi2EN (BLEU)</span>                           | <span style="font-size:11px">Đánh giá khả năng Vietnamese to English translation using BLEU metric</span> | <span style="font-size:11px">BLEU</span>       |    (BLEU)& Embedding Similarity               | 912
 | **<span style="font-size:13px">Human Benchmark</span>**                    |                                                  |            |                   |
-| <span style="font-size:11px">SeaBench (Realworld_Test)</span>              | <span style="font-size:11px">Real-world testing benchmark for human-like tasks</span> |            |                   |
+| <span style="font-size:11px">SeaBench (Realworld_Test)</span>              | <span style="font-size:11px">đánh giá các Mô hình Ngôn ngữ LLMs như các trợ lý hữu ích, bao gồm các loại hướng dẫn đa dạng để đánh giá các mô hình, như mô tả sau đây:
+
+Giải quyết vấn đề: Đánh giá khả năng xử lý ngôn ngữ tự nhiên thông qua các nhiệm vụ như tóm tắt và dịch.
+Suy luận toán học: Đánh giá kỹ năng suy luận toán học và logic.
+Dữ liệu hướng dẫn tổng quát: Kiểm tra kiến thức tổng quát và kỹ năng viết, bao gồm tạo ra các ý tưởng sáng tạo và phản hồi yêu cầu của người dùng.
+NaturalQA: Phân tích phản ứng với ngôn ngữ tự nhiên và ngữ cảnh địa phương từ các truy vấn thực tế của người dùng.
+An toàn: Đảm bảo sự hiểu biết về các quy tắc và quy định an toàn, bao gồm ngữ cảnh địa phương.</span> |            |                   |
 
 
 + Access Benchmark Performance Setting
