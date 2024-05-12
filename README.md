@@ -45,16 +45,16 @@ This project aims to develop a multilingual foundation model both language and m
   
 | Benchmark Category                     | Benchmark Task Description                       | Metric     | Number of Samples |
 |----------------------------------------|--------------------------------------------------|------------|-------------------|
-| **<span style="font-size:14px">General Knowledge</span>**                  |                                                  |            |                   |
+| **<span style="font-size:13px">General Knowledge</span>**                  |                                                  |            |                   |
 | <span style="font-size:11px">Việt Exam Lớp 6-12</span>                     | <span style="font-size:11px">General knowledge test for grades 6 to 12 in Vietnam</span> |            |                   |
 | <span style="font-size:11px">VMLU (Val+Test)</span>                        | <span style="font-size:11px">Validation test for Vietnamese language understanding</span> |            |                   |
-| **<span style="font-size:14px">Summarization (Short & Long)</span>**       |                                                  |            |                   |
+| **<span style="font-size:13px">Summarization (Short & Long)</span>**       |                                                  |            |                   |
 | <span style="font-size:11px">BìnhNews (ROUGH_1,2)</span>                   | <span style="font-size:11px">Roughness metrics 1 and 2 for summarization</span>       | <span style="font-size:11px">ROUGH_1,2</span>  |                   |
 | <span style="font-size:11px">VietNews (ROUGH_1,2)</span>                   | <span style="font-size:11px">Roughness metrics 1 and 2 for news summarization in Vietnamese</span> | <span style="font-size:11px">ROUGH_1,2</span>  |                   |
-| **<span style="font-size:14px">Translation</span>**                        |                                                  |            |                   |
+| **<span style="font-size:13px">Translation</span>**                        |                                                  |            |                   |
 | <span style="font-size:11px">EN2Vi (BLEU)</span>                           | <span style="font-size:11px">English to Vietnamese translation using BLEU metric</span> | <span style="font-size:11px">BLEU</span>       |                   |
 | <span style="font-size:11px">Vi2EN (BLEU)</span>                           | <span style="font-size:11px">Vietnamese to English translation using BLEU metric</span> | <span style="font-size:11px">BLEU</span>       |                   |
-| **<span style="font-size:14px">Human Benchmark</span>**                    |                                                  |            |                   |
+| **<span style="font-size:13px">Human Benchmark</span>**                    |                                                  |            |                   |
 | <span style="font-size:11px">SeaBench (Realworld_Test)</span>              | <span style="font-size:11px">Real-world testing benchmark for human-like tasks</span> |            |                   |
 
 
