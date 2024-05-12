@@ -42,8 +42,22 @@ This project aims to develop a bilingual foundation model both language and mult
 ## Performance Benchmarks on Multiple Task: 
 + Access Benchmark Data
 + Access Benchmark Performance Setting
-+ 
 
+
+
+## Download & Get Latest Version GPTViet: 
++ Assistant Language Model (GPTViet Beta 1.0  Small & Large GPTViet Assistant )
+    - Websearch Assistant Model
+    - ChatDocument Assistant Model
+    - Custom Service Assistant Model
+      
++ Translation Langauge Model from GPTViet Branch  Beta 1.0 Small & Large
+  - VietTranslate English->Vietnamese , Vietnamese -> English
+
++ Medical Langauge Model from GPTViet Branch  Beta 1.0 Small & Large
+  - VietMed trợ lý sức khoẻ
+   
+Bạn có thể kết nối trực tiếp với Trần Nhiệm [email]: tvnhiemhcmus@gmail.com
 
 
 ## Giúp Đỡ (How You can HELP)
