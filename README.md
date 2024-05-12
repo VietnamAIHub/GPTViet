@@ -31,6 +31,9 @@ This project aims to develop a bilingual foundation model both language and mult
   </a>
 </div>
 
+<div align="center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/B0bDwsAli_k?autoplay=1" frameborder="0" allowfullscreen></iframe>
+</div>
 
 
 + [**GPTViet 8B Demo Chat & Websearch Integration**](http://140.115.53.106:8888/)
