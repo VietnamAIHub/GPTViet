@@ -12,7 +12,7 @@ from tqdm import tqdm
 ##------------------------------------------------------------------------------------------
 
 
-data_path="/data2/cmdir/home/villm/data/alpaca_format/data_v4.json"
+data_path="input your dataset path"
 train_data = load_dataset(
         'json',
         data_files=data_path,
@@ -20,7 +20,7 @@ train_data = load_dataset(
         # cache_dir=cache_dir,
         # data_dir=data_dir,
     )
-data_path_eval="/data2/cmdir/home/villm/data/eval_data/subset_en_vi_sebench.json"
+data_path_eval="input your eval dataset path"
 eval_data = load_dataset(
         'json',
         data_files=data_path_eval,
@@ -30,31 +30,25 @@ eval_data = load_dataset(
     )
 
 def prompt_no_input(row):
-    return ("<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by Dr. Tran Nhiem. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
+    return ("<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by VietnamAIHub. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
          When given tasks, approach them step-by-step, always justifying your actions for the user. If you encounter multiple-choice questions, first output the correct answer, then delve into why other options are incorrect.\
           breaking down even complex tasks into simpler, understandable terms.\
-           Additionally, consider yourself well-versed in every language, capable of translating and explaining language tasks effortlessly. When presented with task definitions or samples, dissect them into key components, clarifying each segment with relevant examples. \
-           Your overarching goal is to be a reliable source of knowledge, translating any instruction or task into actionable and easily digestible information.\
         If a question does not make any sense, or is not factually coherent, explain why instead of answering something not \
         correct. If you don't know the answer to a question, please don't share false information.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n {instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n{output}").format_map(row)
 
 
 def prompt_input(row):
 
-    return ("<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by Dr. Tran Nhiem. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
+    return ("<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by VietnamAIHub. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
          When given tasks, approach them step-by-step, always justifying your actions for the user. If you encounter multiple-choice questions, first output the correct answer, then delve into why other options are incorrect.\
           breaking down even complex tasks into simpler, understandable terms.\
-           Additionally, consider yourself well-versed in every language, capable of translating and explaining language tasks effortlessly. When presented with task definitions or samples, dissect them into key components, clarifying each segment with relevant examples. \
-           Your overarching goal is to be a reliable source of knowledge, translating any instruction or task into actionable and easily digestible information.\
         If a question does not make any sense, or is not factually coherent, explain why instead of answering something not \
         correct. If you don't know the answer to a question, please don't share false information.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n {instruction}\n\n### Input:\n{history_conversation} <|eot_id|><|start_header_id|>assistant<|end_header_id|>\n{output}").format_map(row)
 def prompt_eval_no_input(row):
-    return ("<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by Dr. Tran Nhiem. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
+    return ("<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by VietnamAIHub. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
          When given tasks, approach them step-by-step, always justifying your actions for the user. If you encounter multiple-choice questions, first output the correct answer, then delve into why other options are incorrect.\
           breaking down even complex tasks into simpler, understandable terms.\
-           Additionally, consider yourself well-versed in every language, capable of translating and explaining language tasks effortlessly. When presented with task definitions or samples, dissect them into key components, clarifying each segment with relevant examples. \
-           Your overarching goal is to be a reliable source of knowledge, translating any instruction or task into actionable and easily digestible information.\
-        If a question does not make any sense, or is not factually coherent, explain why instead of answering something not \
+         If a question does not make any sense, or is not factually coherent, explain why instead of answering something not \
         correct. If you don't know the answer to a question, please don't share false information.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n {instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n{output}").format_map(row)
 
 
@@ -64,59 +58,6 @@ def create_alpaca_prompt(row):
 
 def create_eval_alpaca_prompt(row):
     return prompt_eval_no_input(row) 
-
-
-# def get_stack_exchange_paired(
-#     data_dir: str = "data/rl",
-#     sanity_check: bool = False,
-#     cache_dir: Optional[str] = None,
-#     num_proc=24,
-# ) -> Dataset:
-#     """Load the stack-exchange-paired dataset from Hugging Face and convert it to the necessary format.
-
-#     The dataset is converted to a dictionary with the following structure:
-#     {
-#         'prompt': List[str],
-#         'chosen': List[str],
-#         'rejected': List[str],
-#     }
-
-#     Prompts are structured as follows:
-#       "Question: " + <prompt> + "\n\nAnswer: "
-#     """
-#     dataset = load_dataset(
-#         'json',
-#         data_files=data_path,
-#         split="train",
-#         # cache_dir=cache_dir,
-#         # data_dir=data_dir,
-#     )
-#     original_columns = dataset.column_names
-
-#     if sanity_check:
-#         dataset = dataset.select(range(min(len(dataset), 1000)))
-
-#     def return_prompt_and_responses(samples) -> Dict[str, str]:
-#         return f"<|im_start|>system\n you are a Foxbrain AI assistant, designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
-#          When given tasks, approach them step-by-step, always justifying your actions for the user. if you encounter multiple-choice questions, first output the correct answer, then delve into why other options are incorrect.\
-#           breaking down even complex tasks into simpler, understandable terms.\
-#            Additionally, consider yourself well-versed in every language, capable of translating and explaining language tasks effortlessly. When presented with task definitions or samples, dissect them into key components, clarifying each segment with relevant examples. \
-#            Your overarching goal is to be a reliable source of knowledge, translating any instruction or task into actionable and easily digestible information.\
-#         If a question does not make any sense, or is not factually coherent, explain why instead of answering something not \
-#         correct. If you don't know the answer to a question, please don't share false information.<|im_end|>\n\n <|im_start|>user \n" + question + "<|im_end|>\n\n<|im_start|>assistant: " for question in samples["prompt_trans"]],
-#             "chosen": samples["chosen_trans"],
-#             "rejected": samples["rejected_trans"],
-        
-
-#     return dataset.map(
-#         return_prompt_and_responses,
-#         batched=True,
-#         num_proc=num_proc,
-#         remove_columns=original_columns,
-#     )
-
-
-# dataset=get_stack_exchange_paired()
 
 
 
@@ -152,12 +93,9 @@ fourbit_models = [
 ] # Go to https://huggingface.co/unsloth for more 4-bit models!
 
 # Load Llama model
-cach_dir_="/data2/cmdir/home/villm/model_weights/mistral"
-cach_dir_='/data2/cmdir/home/villm/model_weights/llama3'
-model_path="/data2/cmdir/home/villm/model_weights/mistral/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/41b61a33a2483885c981aa79e0df6b32407ed873"
-model_path="/data2/cmdir/home/villm/model_weights/llama3/models--meta-llama--Meta-Llama-3-8B/snapshots/b6887ce03ea47d068bf8502ba6ed27f8c5c12a6b"
-model_path="/data2/cmdir/home/villm/model_weights/llama3/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/1448453bdb895762499deb4176c1dd83b145fac1"
-model_path="/data2/cmdir/home/villm/model_weights/llama3/models--meta-llama--Meta-Llama-3-70B-Instruct/snapshots/e8cf5276ae3e97cfde8a058e64a636f2cde47820"
+cach_dir_="path to store model on the disk"
+
+model_path="Model finetuning Path"
 max_seq_length = 3048 # Supports RoPE Scaling interally, so choose any!
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name =model_path , # Supports Llama, Mistral - replace this!
@@ -217,9 +155,8 @@ trainer = SFTTrainer(
         fp16 = not torch.cuda.is_bf16_supported(),
         bf16 = torch.cuda.is_bf16_supported(),
         logging_steps = 10,
-        #output_dir = "/data2/cmdir/home/villm/training_output/",
-        #output_dir = "/data2/cmdir/home/villm/training_instruct_output/",
-        output_dir="/data2/cmdir/home/villm/train_output/llama3_70",
+     
+        output_dir="./output",
 
         optim = "paged_adamw_8bit",
         seed = 3407,
@@ -234,7 +171,7 @@ trainer = SFTTrainer(
 ##------------------------------------------------------------------------------------------
 
 # Assuming your JSON is structured with a top-level array of objects
-dataset = load_dataset('json', data_files={'test': '/data2/cmdir/home/villm/data/eval_data/subset_en_vi_sebench.json'})
+dataset = load_dataset('json', data_files={'test': 'path of your test set'})
 # Access the test set
 test_dataset = dataset['test']
 ## Adding the Computing Cosine Similarity on Different Benchmark Test
@@ -257,7 +194,7 @@ class LLMSampleCB(WandbCallback):
         records_table = wandb.Table(columns=["prompt", "generation"] + list(self.gen_config.to_dict().keys()))
         for example in tqdm(examples, leave=False):
             input = example["instruction"]
-            prompt= f"<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by Dr. Tran Nhiem. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
+            prompt= f"<|begin_of_text|><|start_header_id|>system<|end_header_id|> \nYou are GPTViet, a helpful assistant developed by VietnamAIHub. designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.\
          When given tasks, approach them step-by-step, always justifying your actions for the user. If you encounter multiple-choice questions, first output the correct answer, then delve into why other options are incorrect.\
           breaking down even complex tasks into simpler, understandable terms.\
            Additionally, consider yourself well-versed in every language, capable of translating and explaining language tasks effortlessly. When presented with task definitions or samples, dissect them into key components, clarifying each segment with relevant examples. \
@@ -279,16 +216,11 @@ trainer.add_callback(wandb_callback)
 trainer.train()
 
 
-output_dir="/data2/cmdir/home/villm/training_instruct_output"
-output_dir="/data2/cmdir/home/villm/train_output/llama3_70"
+
+output_dir="./output"
 
 trainer.save_model(output_dir)
 
 # 7. save
 output_dir = os.path.join(output_dir, "final_checkpoint")
 trainer.model.save_pretrained(output_dir)
-# Go to https://github.com/unslothai/unsloth/wiki for advanced tips like
-# (1) Saving to GGUF / merging to 16bit for vLLM
-# (2) Continued training from a saved LoRA adapter
-# (3) Adding an evaluation loop / OOMs
-# (4) Cutomized chat templates 
