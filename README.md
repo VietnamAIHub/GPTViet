@@ -42,22 +42,36 @@ This project aims to develop a multilingual foundation model both language and m
 ## Performance Benchmarks on Multiple Task: 
 
 + Comprehensive and Advanced Vietnamese Benchmark for Language Model
-  | Benchmark Category                     | Bechmark Task Description                     |
-|------------------------------|---------------------------|
-| **General Knowledge**        |                           |
-| Việt Exam Lớp 6-12           | General knowledge test for grades 6 to 12 in Vietnam |
-| VMLU (Val+Test)             | Validation test for Vietnamese language understanding |
-| **Summarization (Short & Long)** |                     |
-| BìnhNews (ROUGH_1,2)         | Roughness metrics 1 and 2 for summarization |
-| VietNews (ROUGH_1,2)         | Roughness metrics 1 and 2 for news summarization in Vietnamese |
-| **Translation**              |                           |
-| EN2Vi (BLEU)                 | English to Vietnamese translation using BLEU metric |
-| Vi2EN (BLEU)                 | Vietnamese to English translation using BLEU metric |
-| **Human Benchmark**          |                           |
-| SeaBench (Realworld_Test)    | Real-world testing benchmark for human-like tasks |
+  
+| Benchmark Category                     | Benchmark Task Description                       | Metric     | Number of Samples |
+|----------------------------------------|--------------------------------------------------|------------|-------------------|
+| **General Knowledge**                  |                                                  |            |                   |
+| Việt Exam Lớp 6-12                     | General knowledge test for grades 6 to 12 in Vietnam |            |                   |
+| VMLU (Val+Test)                        | Validation test for Vietnamese language understanding |            |                   |
+| **Summarization (Short & Long)**       |                                                  |            |                   |
+| BìnhNews (ROUGH_1,2)                   | Roughness metrics 1 and 2 for summarization       | ROUGH_1,2  |                   |
+| VietNews (ROUGH_1,2)                   | Roughness metrics 1 and 2 for news summarization in Vietnamese | ROUGH_1,2  |                   |
+| **Translation**                        |                                                  |            |                   |
+| EN2Vi (BLEU)                           | English to Vietnamese translation using BLEU metric | BLEU       |                   |
+| Vi2EN (BLEU)                           | Vietnamese to English translation using BLEU metric | BLEU       |                   |
+| **Human Benchmark**                    |                                                  |            |                   |
+| SeaBench (Realworld_Test)              | Real-world testing benchmark for human-like tasks |            |                   |
+
 
 + Access Benchmark Performance Setting
 
+| LLM Model                 | General Knowledge | Summarization (Short & Long) | Translation | Human Benchmark |
+|---------------------------|-------------------|------------------------------|-------------|-----------------|
+|                           | Việt Exam Lớp 6-12 <br> VMLU (Val+Test) | BìnhNews (ROUGH_1,2) <br> VietNews (ROUGH_1,2) | EN2Vi (BLEU) <br> Vi2EN (BLEU) | SeaBench (Realworld_Test) |
+| GPTViet 8B (Llama3 Based) | %                 | %                            | %           | %               |
+| GPTViet 70 (Llama3 based) | %                 | %                            | %           | %               |
+| Llama 3 70 Instruct (Meta)| %                 | %                            | %           | %               |
+| Llama 3 8B Instruct (Meta)| %                 | %                            | %           | %               |
+| VNPTAI.IO-14B (Qwen-14B)  | %                 | %                            | %           | %               |
+| Vistral (Mistral 7B)      | %                 | %                            | %           | %               |
+| SeaLLM v2.5 (Llama2-7B)   | %                 | %                            | %           | %               |
+| GPT-3.5                   | %                 | %                            | %           | %               |
+| GPT-4 (Turbo)             | %                 | %                            | %           | %               |
 
 
 ## Download & Get Latest Version GPTViet: 
