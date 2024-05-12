@@ -62,12 +62,11 @@ This project aims to develop a multilingual foundation model both language and m
 
 | LLM Model                 | General Knowledge | Summarization (Short & Long) | Translation | Human Benchmark |
 |---------------------------|-------------------|------------------------------|-------------|-----------------|
-|                           | Việt Exam Lớp 6-12 <br> VMLU (Val+Test) | BìnhNews (ROUGH_1,2) <br> VietNews (ROUGH_1,2) | EN2Vi (BLEU) <br> Vi2EN (BLEU) | SeaBench (Realworld_Test) |
-| GPTViet 8B (Llama3 Based) | %                 | %                            | %           | %               |
-| GPTViet 70 (Llama3 based) | %                 | %                            | %           | %               |
+|                           | Việt Exam <br> VMLU (Val+Test) | BìnhNews (ROUGH_1,2) <br> VietNews (ROUGH_1,2) | EN2Vi (BLEU) <br> Vi2EN (BLEU) | SeaBench (Realworld_Test) |
+| GPTViet 8B (Small) | %                 | %                            | %           | %               |
+| GPTViet 70 (Large) | %                 | %                            | %           | %               |
 | Llama 3 70 Instruct (Meta)| %                 | %                            | %           | %               |
 | Llama 3 8B Instruct (Meta)| %                 | %                            | %           | %               |
-| VNPTAI.IO-14B (Qwen-14B)  | %                 | %                            | %           | %               |
 | Vistral (Mistral 7B)      | %                 | %                            | %           | %               |
 | SeaLLM v2.5 (Llama2-7B)   | %                 | %                            | %           | %               |
 | GPT-3.5                   | %                 | %                            | %           | %               |
