@@ -26,8 +26,9 @@ This project aims to develop a bilingual foundation model both language and mult
 ## Demo Language Model: 
 
 <div align="center">
-     <img width="auto" height="500px" src="./images/Vietassistant_GPT.gif"/>
+    [![Watch the video](https://img.youtube.com/vi/B0bDwsAli_k/0.jpg)](https://youtu.be/B0bDwsAli_k)
 </div>
+
 
 + [**GPTViet 8B Demo Chat & Websearch Integration**](http://140.115.53.106:8888/)
 + [**GPTViet 70B Demo Coming Soon**]()
