@@ -55,13 +55,8 @@ This project aims to develop a multilingual foundation model both language and m
 | <span style="font-size:11px"> Flore 101 EN2Vi </span>                           | <span style="font-size:11px"> Đánh giá khả năng dịch thuật English to Vietnamese</span> | <span style="font-size:11px">BLEU</span>       |       (BLEU)& Embedding Similarity           | 1297
 | <span style="font-size:11px"> Flore 101 Vi2EN (BLEU)</span>                           | <span style="font-size:11px">Đánh giá khả năng Vietnamese to English translation using BLEU metric</span> | <span style="font-size:11px">BLEU</span>       |    (BLEU)& Embedding Similarity               | 912
 | **<span style="font-size:13px">Human Benchmark</span>**                    |                                                  |            |                   |
-| <span style="font-size:11px">SeaBench (Realworld_Test)</span>              | <span style="font-size:11px">đánh giá các Mô hình Ngôn ngữ LLMs như các trợ lý hữu ích, bao gồm các loại hướng dẫn đa dạng để đánh giá các mô hình, như mô tả sau đây:
-
-Giải quyết vấn đề: Đánh giá khả năng xử lý ngôn ngữ tự nhiên thông qua các nhiệm vụ như tóm tắt và dịch.
-Suy luận toán học: Đánh giá kỹ năng suy luận toán học và logic.
-Dữ liệu hướng dẫn tổng quát: Kiểm tra kiến thức tổng quát và kỹ năng viết, bao gồm tạo ra các ý tưởng sáng tạo và phản hồi yêu cầu của người dùng.
-NaturalQA: Phân tích phản ứng với ngôn ngữ tự nhiên và ngữ cảnh địa phương từ các truy vấn thực tế của người dùng.
-An toàn: Đảm bảo sự hiểu biết về các quy tắc và quy định an toàn, bao gồm ngữ cảnh địa phương.</span> |            |                   |
+| <span style="font-size:11px">SeaBench (Realworld_Test)</span>              | <span style="font-size:11px">đánh giá các Mô hình Ngôn ngữ LLMs như các trợ lý hữu ích, bao gồm các loại hướng dẫn đa dạng để đánh giá các mô hình, như mô tả sau đây: Giải quyết vấn đề: Đánh giá 1. khả năng xử lý ngôn ngữ tự nhiên thông qua các nhiệm vụ như tóm tắt và dịch. 2. Suy luận toán học: Đánh giá kỹ năng suy luận toán học và logic. 3.Dữ liệu hướng dẫn tổng quát: Kiểm tra kiến thức tổng quát và kỹ năng viết, bao gồm tạo ra các ý tưởng sáng tạo và phản hồi yêu cầu của người dùng. 4. NaturalQA: Phân tích phản ứng với ngôn ngữ tự nhiên và ngữ cảnh địa phương từ các truy vấn thực tế của người dùng.
+5. An toàn: Đảm bảo sự hiểu biết về các quy tắc và quy định an toàn, bao gồm ngữ cảnh.</span> |       Human/GPT4 as a Judge     |          130         |
 
 
 + Access Benchmark Performance Setting
