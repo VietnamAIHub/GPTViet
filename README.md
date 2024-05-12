@@ -40,7 +40,22 @@ This project aims to develop a multilingual foundation model both language and m
 + [**GPTViet Document Chat Demo Coming Soon**]()
 
 ## Performance Benchmarks on Multiple Task: 
-+ Access Benchmark Data
+
++ Comprehensive and Advanced Vietnamese Benchmark for Language Model
+  | Benchmark Category                     | Bechmark Task Description                     |
+|------------------------------|---------------------------|
+| **General Knowledge**        |                           |
+| Việt Exam Lớp 6-12           | General knowledge test for grades 6 to 12 in Vietnam |
+| VMLU (Val+Test)             | Validation test for Vietnamese language understanding |
+| **Summarization (Short & Long)** |                     |
+| BìnhNews (ROUGH_1,2)         | Roughness metrics 1 and 2 for summarization |
+| VietNews (ROUGH_1,2)         | Roughness metrics 1 and 2 for news summarization in Vietnamese |
+| **Translation**              |                           |
+| EN2Vi (BLEU)                 | English to Vietnamese translation using BLEU metric |
+| Vi2EN (BLEU)                 | Vietnamese to English translation using BLEU metric |
+| **Human Benchmark**          |                           |
+| SeaBench (Realworld_Test)    | Real-world testing benchmark for human-like tasks |
+
 + Access Benchmark Performance Setting
 
 
