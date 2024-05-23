@@ -90,7 +90,7 @@ run = wandb.init(
 @dataclass
 class ModelArguments:
     model_name_or_path: Optional[str] = field(
-        default="/data2/cmdir/home/villm/model_weights/llama3/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/1448453bdb895762499deb4176c1dd83b145fac1"
+        default="input your Model path"
 
     )
     trust_remote_code: Optional[bool] = field(
@@ -130,7 +130,7 @@ class DataArguments:
         metadata={"help": "Maximum target sequence length. Sequences will be right padded (and possibly truncated)."},
     )
     dataset: str = field(
-        default="/data2/cmdir/home/villm/data/Translation/merge_wikilingual_healthcareMagic_Conversation/final_output_wikilingual_healthcare_magic_conversation_trans.json", 
+        default="Input your data path", 
 
         metadata={"help": "Which dataset to finetune on. See datamodule for options."}
     )
@@ -208,7 +208,7 @@ class TrainingArguments(transformers.Seq2SeqTrainingArguments):
         default='wandb',
         metadata={"help": "To use wandb or something else for reporting."}
     )
-    output_dir: str = field(default='/data2/cmdir/home/villm/train_output/Qlora_output_llama3_med_trans_v2', metadata={"help": 'The output dir for logs and checkpoints'})
+    output_dir: str = field(default='./output', metadata={"help": 'The output dir for logs and checkpoints'})
     optim: str = field(default='paged_adamw_8bit', metadata={"help": 'The optimizer to be used'})
     per_device_train_batch_size: int = field(default=8, metadata={"help": 'The training batch size per GPU. Increase for better speed.'})
     gradient_accumulation_steps: int = field(default=2, metadata={"help": 'How many gradients to accumulate before to perform an optimizer step'})
@@ -874,7 +874,7 @@ def train():
         trainer.save_metrics("eval", metrics)
         all_metrics.update(metrics)
 
-        dataset = load_dataset('json', data_files={'test': '/LLM_32T/llm_data/Instruction_finetune_dataset/cn_Instruct_dataset/mix_vi/PhoMT_en_vi_test.json'})
+        dataset = load_dataset('json', data_files={'test': 'Input your test set dataset path'})
 
         # Access the test set
         test_dataset = dataset['test']
