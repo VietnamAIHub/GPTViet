@@ -83,7 +83,7 @@ payload = {
     "stream": True, 
     "options": {
         # "seed": 123,
-        "temperature": 0.2 ## Setting for GPU
+        "temperature": 0.2 
         # "top_k": 20,
         # "top_p": 0.9,
         # "tfs_z": 0.5,
