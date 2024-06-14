@@ -64,8 +64,8 @@ This project aims to develop a multilingual foundation model both language and m
 |                           | Việt Exam <br> VMLU (Val+Test) | BìnhNews (ROUGH_1,2) <br> VietNews (ROUGH_1,2) | EN2Vi (BLEU) <br> Vi2EN (BLEU) | SeaBench (Realworld_Test) |
 | GPTViet 8B (Small) | 38.96%                 | 47.95%                            | %           | %               |
 | GPTViet 70 (Large) | 53.65%                 | 69.72%                            | %           | %               |
-| Llama 3 70 Instruct (Meta)| %                 | %                            | %           | %               |
-| Llama 3 8B Instruct (Meta)| %                 | %                            | %           | %               |
+| Llama 3 70 Instruct (Meta)| 50.90%                 | 51.38%                            | %           | %               |
+| Llama 3 8B Instruct (Meta)| 31.94%                 | %                            | %           | %               |
 | Vistral (Mistral 7B)      | %                 | %                            | %           | %               |
 | SeaLLM v2.5 (Llama2-7B)   | %                 | %                            | %           | %               |
 | GPT-3.5                   | %                 | %                            | %           | %               |
