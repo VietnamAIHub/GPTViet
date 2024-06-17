@@ -3,6 +3,7 @@ import os
 import requests
 import json
 
+DEFAULT_SYSTEM_PROMPT = """\nYou are GPTViet created by VietnamAIHub. Designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity."""
 
 ### Helper function to format the chat messages and Print out the response
 
@@ -18,7 +19,7 @@ def apply_chat_template(example):
     ## Add an empty system message if there is no initial system message
     elif messages and messages[0]["role"] != "system":
         # Insert a new system message at the beginning if there isn't one
-        messages.insert(0, {"role": "system", "content": "<|begin_of_text|>system<|start_header_id|>\nYou are GPTViet created by VietnamAIHub. Designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity.<|eot_id|>"})
+        messages.insert(0, {"role": "system", "content": "<|begin_of_text|>system<|start_header_id|>{DEFAULT_SYSTEM_PROMPT}<|eot_id|>"})
         
     # Define your end-of-sentence token here
     eos_token_="<|eot_id|><|start_header_id|>assistant<|end_header_id|>"
@@ -27,7 +28,7 @@ def apply_chat_template(example):
         role = message['role']
         
         if role =="user":
-            content = "<|start_header_id|>user<|end_header_id|>\n\n" + message['content'] + eos_token_
+            content = "<|start_header_id|>user<|end_header_id|>\n\n" + message['content'] + "\n\nYour Vietnamese response:" + eos_token_
             formatted_chat += f'{content}'
         
         elif  role =="assistant":
@@ -60,7 +61,7 @@ def print_response(response):
         print("Request failed with status code:", response.status_code)
     return all_content
 
-DEFAULT_SYSTEM_PROMPT = """\nYou are GPTViet created by VietnamAIHub. Designed to help users find detailed and comprehensive information. Always aim to provide answers in such a manner that users don't need to search elsewhere for clarity."""
+
 messages = {
 "messages": [
     {"role": "system", "content": f"{DEFAULT_SYSTEM_PROMPT}"}
