@@ -59,6 +59,7 @@ This project aims to develop a multilingual foundation model both language and m
 
 + Access Benchmark Performance Setting
 
+
 | LLM Model                 | General Knowledge | Summarization (Short & Long) | Translation | Human Benchmark |
 |---------------------------|-------------------|------------------------------|-------------|-----------------|
 |                           | Việt Exam <br> VMLU (Val+Test) | BìnhNews (ROUGH_1,2) <br> VietNews (ROUGH_1,2) | EN2Vi (BLEU) <br> Vi2EN (BLEU) | SeaBench (Realworld_Test) |
@@ -71,6 +72,26 @@ This project aims to develop a multilingual foundation model both language and m
 | GPT-3.5                   | %                 | %                            | %           | %               |
 | GPT-4 (Turbo)             | %                 | %                            | %           | %               |
 
+
+
+## Vietnamese-English Translation Flores 101 Benchmark
+
+Flores-101 evaluation benchmark, consisting of 3001 sentences extracted from English Wikipedia to Other Languages and covering a variety of different topics and domains.
+
+| LLM Model                      | Translation Vietnamese--English |          |          | Translation English--Vietnamese |          |          |
+|--------------------------------|---------------------------------|----------|----------|---------------------------------|----------|----------|
+|                                | BLEU Score                      | ROUGH-1  | ROUGH-2  | BLEU Score                      | ROUGH-1  | ROUGH-2  |
+| GPTViet 8B (2024-05-Version)   | 21.8%                           | 56.03%   | 31.42%   | 26.0%                           | 59.65%   | 36.14%   |
+| GPTViet 70 (2024-06-Version)   | 27.6%                           | 61.15%   | 37.39%   | 33.3%                           | 67.08%   | 43.97%   |
+| Llama 3 70 Instruct (Meta)     | 25.0%                           | 58.14%   | 35.02%   | 33.0%                           | 66.56%   | 43.63%   |
+| Llama 3 8B Instruct (Meta)     | 19.3%                           | 51.62%   | 28.15%   | 9.8%                            | 24.16%   | 13.92%   |
+| GPT-3.5 (OpenAI)               | 28.1%                           | 62.05%   | 38.14%   | 34.0%                           | 67.0%    | 44.63%   |
+| GPT-4 (Turbo) (OpenAI)         | --%                             | --%      | --%      | --%                             | --%      | --%      |
+
+| LLM Model                      | Translation zh--English     || Translation English--zh     ||
+|--------------------------------|-----------------------------|------------------------------|-----------------------------|------------------------------|
+|                                | BLEU Score                  | ROUGH-1                      | BLEU Score                  | ROUGH-1                      |
+| FoxBrain 8B (2024-05-Version)   | 21.8%                       | 56.03%                       | 26.0%                       | 59.65%                       |
 
 ## Download & Get Latest Version GPTViet: 
 + Assistant Language Model (GPTViet Beta 1.0  Small & Large GPTViet Assistant )
