@@ -59,7 +59,7 @@ This project aims to develop a multilingual foundation model both language and m
 
 + Access Benchmark Performance Setting
 
-
+<!-- 
 | LLM Model                 | General Knowledge | Summarization (Short & Long) | Translation | Human Benchmark |
 |---------------------------|-------------------|------------------------------|-------------|-----------------|
 |                           | Việt Exam <br> VMLU (Val+Test) | BìnhNews (ROUGH_1,2) <br> VietNews (ROUGH_1,2) | EN2Vi (BLEU) <br> Vi2EN (BLEU) | SeaBench (Realworld_Test) |
@@ -71,8 +71,21 @@ This project aims to develop a multilingual foundation model both language and m
 | SeaLLM v2.5 (Llama2-7B)   | %                 | %                            | %           | %               |
 | GPT-3.5                   | %                 | %                            | %           | %               |
 | GPT-4 (Turbo)             | %                 | %                            | %           | %               |
+-->
 
+## Multi Domains – General Knowledge Understanding Viet Exam (Lớp 6 -> THPT) & VLMU Benchmark
 
+- **Viet Exam:** Collection of 10k Questions and answers across all Subjects from Vietnamese Exam from 6 to 12 Grades.
+- **The VMLU Dataset:** Comprises 58 distinct subjects. These subjects are systematically categorized into four primary domains: STEM, Humanities, Social Sciences, and a broad category designated as 'Others.'
+
+| LLM Model                      | Việt Exam (10,000 Questions) Prefix Match Accuracy | VLMU (Val+Dev) (1048 Questions) Prefix Match Accuracy |
+|--------------------------------|----------------------------------------------------|-----------------------------------------------------|
+| GPTViet 8B (2024-05-Version)   | 39.28%                                             | 48.04%                                              |
+| GPTViet 70 (2024-06-Version)   | 53.80%                                             | 70.20%                                              |
+| Llama 3 70 Instruct (Meta)     | 50.50%                                             | 51.58%                                              |
+| Llama 3 8B Instruct (Meta)     | 32.07%                                             | 23.59%                                              |
+| GPT-3.5 (OpenAI)               | --%                                                | --%                                                 |
+| GPT-4 (Turbo) (OpenAI)         | --%                                                | --%                                                 |
 
 ## Vietnamese-English Translation Flores 101 Benchmark
 
@@ -88,10 +101,11 @@ Flores-101 evaluation benchmark, consisting of 3001 sentences extracted from Eng
 | GPT-3.5 (OpenAI)               | 28.1%                           | 62.05%   | 38.14%   | 34.0%                           | 67.0%    | 44.63%   |
 | GPT-4 (Turbo) (OpenAI)         | --%                             | --%      | --%      | --%                             | --%      | --%      |
 
-| LLM Model                      | Translation zh--English     || Translation English--zh     ||
-|--------------------------------|-----------------------------|------------------------------|-----------------------------|------------------------------|
-|                                | BLEU Score                  | ROUGH-1                      | BLEU Score                  | ROUGH-1                      |
-| FoxBrain 8B (2024-05-Version)   | 21.8%                       | 56.03%                       | 26.0%                       | 59.65%                       |
+| LLM Model                      | Translation zh--English |          | Translation English--zh |          |
+|--------------------------------|-------------------------|----------|-------------------------|----------|
+|                                | BLEU Score              | ROUGH-1  | BLEU Score              | ROUGH-1  |
+| FoxBrain 8B (2024-05-Version)  | 21.8%                   | 56.03%   | 26.0%                   | 59.65%   |
+
 
 ## Download & Get Latest Version GPTViet: 
 + Assistant Language Model (GPTViet Beta 1.0  Small & Large GPTViet Assistant )
