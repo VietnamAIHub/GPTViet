@@ -101,10 +101,6 @@ Flores-101 evaluation benchmark, consisting of 3001 sentences extracted from Eng
 | GPT-3.5 (OpenAI)               | 28.1%                           | 62.05%   | 38.14%   | 34.0%                           | 67.0%    | 44.63%   |
 | GPT-4 (Turbo) (OpenAI)         | --%                             | --%      | --%      | --%                             | --%      | --%      |
 
-| LLM Model                      | Translation zh--English |          | Translation English--zh |          |
-|--------------------------------|-------------------------|----------|-------------------------|----------|
-|                                | BLEU Score              | ROUGH-1  | BLEU Score              | ROUGH-1  |
-| FoxBrain 8B (2024-05-Version)  | 21.8%                   | 56.03%   | 26.0%                   | 59.65%   |
 
 
 ## Download & Get Latest Version GPTViet: 
