@@ -77,7 +77,7 @@ messages["messages"].append({"role": "user", "content": f"cho tôi biết bạn 
 
 input_prompt = apply_chat_template(messages)
 
-url = "http://40.84.133.133:8889/api/generate"
+url = "Contact Nhiem for access model tvnhiemhcmus@gmail.com"
 payload = {
     "model": "GPTViet_2024_04_version",
     "prompt": input_prompt,
