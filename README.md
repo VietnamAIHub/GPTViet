@@ -115,14 +115,10 @@ Flores-101 evaluation benchmark, consisting of 3001 sentences extracted from Eng
 + Medical Langauge Model from GPTViet Branch  Beta 1.0 Small & Large
   - VietMed trợ lý sức khoẻ
    
-Bạn có thể kết nối trực tiếp với GPTViet Foundation Team: 
+## Kết Nối Với GPTViet Team (Contact to GPTViet TEAM)
 
+Bạn có thể kết nối trực tiếp với GPTViet Foundation Team: 
 
 Trần Nhiệm [email]: tvnhiemhcmus@gmail.com
 
 
-## Giúp Đỡ (How You can HELP)
-1. Nhằm để hỗ trợ tài chính Nhóm xin nhận làm các dự án của công ty tư nhân, các tổ chức nghiên cứu, hoặc cá nhân.
-2. Bạn có thể hổ trợ về tài nguyên như máy chủ server hoặc các tài nguyên khác.
-  - Dự án hiện rất cần các nguồn tài trợ tài nguyên GPUs để có thể tiến hành quá trình huấn luyện (Training Model).
-  - 
