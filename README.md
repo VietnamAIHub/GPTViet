@@ -118,7 +118,13 @@ Flores-101 evaluation benchmark, consisting of 3001 sentences extracted from Eng
 ## Kết Nối Với GPTViet Team (Contact to GPTViet TEAM)
 
 Bạn có thể kết nối trực tiếp với GPTViet Foundation Team: 
+http://www.gptviet.ioit.ac.vn
+Team member 
+Nguyễn Trường Thắng [email] : ntthang@ioit.ac.vn
+Trần Nhiệm [email]: tvnhiemhcmus@gmail.com 
+Bùi Kiên [email]: bizgo.cc@gmail.com
+Trương Thị Minh Ngọc: ngocttm@ioit.ac.vn
 
-Trần Nhiệm [email]: tvnhiemhcmus@gmail.com
+
 
 
