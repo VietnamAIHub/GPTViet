@@ -35,7 +35,7 @@ This project aims to develop a multilingual foundation model both language and m
 </div>
 
 
-+ [**GPTViet 8B Demo Chat & Websearch Integration**](http://140.115.53.106:8888/)
++ [**GPTViet 8B Demo Chat & Websearch Integration**](http://140.115.53.106:8000/)
 + [**GPTViet 70B Demo Coming Soon**]()
 + [**GPTViet Document Chat Demo Coming Soon**]()
 
